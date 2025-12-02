@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cinzel, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AccentColorProvider } from "@/components/reusable/AccentColorContext";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -30,13 +31,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-        <body className={`${cinzel.variable} ${inter.variable} antialiased`}>          <ThemeProvider
+        <body className={`${cinzel.variable} ${inter.variable} antialiased`}>          
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <AccentColorProvider>
+              {children}
+            </AccentColorProvider>
           </ThemeProvider>
         </body>
     </html>

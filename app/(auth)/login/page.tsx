@@ -18,7 +18,7 @@ export default function Home() {
     localStorage.setItem("userEmail", email);
 
     // Redirect to dashboard
-    router.push("/settings");
+    router.push("/settings/user-management");
   }
 
   return (
